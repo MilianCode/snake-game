@@ -85,6 +85,16 @@ public class Panel extends JPanel implements ActionListener {
             y[i] = y[i-1];
         }
 
+        if(x[0] > SCREEN_WIDTH)
+            x[0] = 0 - UNIT_SIZE;
+        if(y[0] > SCREEN_HEIGHT)
+            y[0] = 0 - UNIT_SIZE;
+
+        if(x[0] < 0 - UNIT_SIZE)
+            x[0] = SCREEN_WIDTH;
+        if(y[0] < 0 - UNIT_SIZE)
+            y[0] = SCREEN_HEIGHT;
+
         switch (direction){
             case 'U':
                 y[0] = y[0] - UNIT_SIZE;
@@ -114,22 +124,6 @@ public class Panel extends JPanel implements ActionListener {
             if ((x[0] == x[i])&&(y[0] == y[i])){
                 running = false;
             }
-        }
-
-        if (x[0] < 0){
-            running = false;
-        }
-
-        if (x[0] > SCREEN_WIDTH){
-            running = false;
-        }
-
-        if (y[0] < 0){
-            running = false;
-        }
-
-        if (y[0] > SCREEN_HEIGHT){
-            running = false;
         }
 
         if (!running){
